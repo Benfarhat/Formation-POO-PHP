@@ -37,23 +37,37 @@ class Form
      * Entoure le code avec un tag
      *
      * @param string $html le code à entourer
-     * @return void
+     * @return string
      */
     private function surround($html)
     {
         return "<{$this->surround}>$html</{$this->surround}>";
     }
 
+    /**
+     * Retourne la valeur d'un index
+     *
+     * @param string $index Index de la valeur à récupérer
+     * @return string
+     */
     private function getValue($index)
     {
         return isset($this->data[$index]) ? $this->data[$index] : null;
     }
 
+    /**
+     * @param string $name
+     * @return string
+     */
     public function input($name)
     {
         return $this->surround('<input type="text" name ="' . $name . '" value="' . $this->getValue($name) . '">');
     }
-
+    
+    /**
+     * @param string $name
+     * @return string
+     */
     public function submit()
     {
         return $this->surround('<button type="submit">Envoyer</button>');
